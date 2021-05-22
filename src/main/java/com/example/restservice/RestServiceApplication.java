@@ -2,7 +2,9 @@ package com.example.restservice;
 
 //import com.example.restservice.database.DatabaseConnection;
 
+import com.example.restservice.user.User;
 import com.example.restservice.user.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,8 +17,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 @PropertySources({@PropertySource(value = "classpath:application.properties")})
 public class RestServiceApplication implements CommandLineRunner {
 
-//    @Autowired
-//    private UserRepository userRepo;
+    @Autowired
+    private UserRepository userRepo;
 
     public static void main(String[] args) {
         SpringApplication.run(RestServiceApplication.class, args);
@@ -39,19 +41,17 @@ public class RestServiceApplication implements CommandLineRunner {
     }
 
     private void testReadWriteToDb() {
-//        userRepo.deleteAll();
-////
-//        // save a couple of users
-//		userRepo.save(new User("Alice", "Smith"));
-//		userRepo.save(new User("Bob", "Smith"));
+        userRepo.deleteAll();
 
-        // fetch all users
-//        System.out.println("Users:");
-//        System.out.println("-------------------------------");
-//        for (User user : userRepo.findAll()) {
-//            System.out.println(user.toString());
-//        }
-//        System.out.println();
+		userRepo.save(new User("Alice", "Smith"));
+		userRepo.save(new User("Bob", "Smith"));
+
+        System.out.println("Users:");
+        System.out.println("-------------------------------");
+        for (User user : userRepo.findAll()) {
+            System.out.println(user.toString());
+        }
+        System.out.println();
     }
 
 }

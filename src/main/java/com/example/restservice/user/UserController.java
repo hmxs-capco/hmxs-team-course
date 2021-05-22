@@ -10,15 +10,12 @@ import java.util.List;
 @RestController
 public class UserController {
 
-	private final static String USERS_BASE_ENDPOINT = "/users";
-
-//	@Autowired
-//	private UserService userService;
+	private final static String USERS_BASE_URL = "/users";
 
 	@Autowired
 	private UserRepository userRepo;
 
-	@GetMapping("/users")
+	@GetMapping(USERS_BASE_URL)
 	public ResponseEntity<List<User>> users() {
 		return new ResponseEntity<List<User>>(userRepo.findAll(), HttpStatus.OK);
 	}
