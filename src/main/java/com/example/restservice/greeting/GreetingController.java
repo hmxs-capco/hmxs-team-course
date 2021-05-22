@@ -9,13 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GreetingController {
 
-	private static final String HELLO_BASE_URL = "/hello";
-	private static final String HELLO_TEMPLATE = "Hello, %s!";
-
+	private static final String GREETING_BASE_ENDPOINT = "/hello";
+	private static final String GREETING_TEMPLATE = "Hello, %s!";
 	private final AtomicLong counter = new AtomicLong();
 
-	@GetMapping(HELLO_BASE_URL)
+	@GetMapping(GREETING_BASE_ENDPOINT)
 	public Greeting hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return new Greeting(counter.incrementAndGet(), String.format(HELLO_TEMPLATE, name));
+		return new Greeting(counter.incrementAndGet(), String.format(GREETING_TEMPLATE, name));
 	}
 }
