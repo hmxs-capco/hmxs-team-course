@@ -1,7 +1,5 @@
 package com.example.restservice;
 
-//import com.example.restservice.database.DatabaseConnection;
-
 import com.example.restservice.user.User;
 import com.example.restservice.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +24,19 @@ public class RestServiceApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // testDbConnection();
-        testReadWriteToDb();
+        initUsersInDb();
+    }
+
+    private void initUsersInDb() {
+        userRepo.deleteAll();
+		// userRepo.save(new User("Alice", "Smith"));
+		// userRepo.save(new User("Bob", "Smith"));
+        System.out.println("Users:");
+        System.out.println("-------------------------------");
+        for (User user : userRepo.findAll()) {
+            System.out.println(user.toString());
+        }
+        System.out.println();
     }
 
     private void testDbConnection() {
@@ -38,20 +47,6 @@ public class RestServiceApplication implements CommandLineRunner {
 //        } catch (Exception e) {
 //            System.out.println("mongo::Error connecting to database");
 //        }
-    }
-
-    private void testReadWriteToDb() {
-        userRepo.deleteAll();
-
-		userRepo.save(new User("Alice", "Smith"));
-		userRepo.save(new User("Bob", "Smith"));
-
-        System.out.println("Users:");
-        System.out.println("-------------------------------");
-        for (User user : userRepo.findAll()) {
-            System.out.println(user.toString());
-        }
-        System.out.println();
     }
 
 }

@@ -20,4 +20,10 @@ public class UserController {
 		return new ResponseEntity<List<User>>(userRepo.findAll(), HttpStatus.OK);
 	}
 
+	@PostMapping(value = USERS_BASE_URL)
+	public ResponseEntity<User> addUser(@RequestBody User user) {
+		return new ResponseEntity<User>(userRepo.save(user), HttpStatus.CREATED);
+
+	}
+
 }
