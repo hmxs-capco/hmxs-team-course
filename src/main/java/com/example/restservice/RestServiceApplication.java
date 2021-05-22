@@ -35,7 +35,7 @@ public class RestServiceApplication implements CommandLineRunner {
     private void log4j2() {
         LOGGER.debug("Debug Message Logged !!!");
         LOGGER.info("Info Message Logged !!!");
-        //LOGGER.error("Error Message Logged !!!", new NullPointerException("NullError"));
+        // LOGGER.error("Error Message Logged !!!", new NullPointerException("NullError"));
     }
 
     private void initUsersInDb() {
@@ -48,16 +48,6 @@ public class RestServiceApplication implements CommandLineRunner {
             System.out.println(user.toString());
         }
         System.out.println();
-    }
-
-    private void testDbConnection() {
-//        DatabaseConnection dbCon = new DatabaseConnection();
-//        try {
-//            MongoDatabase db = dbCon.db();
-//            System.out.println("mongo::Connected to database: " + db.getName());
-//        } catch (Exception e) {
-//            System.out.println("mongo::Error connecting to database");
-//        }
     }
 
 }
