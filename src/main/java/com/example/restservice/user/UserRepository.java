@@ -1,4 +1,4 @@
-package com.example.restservice.greeting;
+package com.example.restservice.user;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

@@ -2,7 +2,8 @@ package com.example.restservice.greeting;
 
 //import com.example.restservice.database.DatabaseConnection;
 
-import com.mongodb.client.MongoDatabase;
+import com.example.restservice.user.User;
+import com.example.restservice.user.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -10,8 +11,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @SpringBootApplication
+@EnableMongoRepositories(basePackageClasses = UserRepository.class)
 @PropertySources({@PropertySource(value = "classpath:application.properties")})
 public class RestServiceApplication implements CommandLineRunner {
 
