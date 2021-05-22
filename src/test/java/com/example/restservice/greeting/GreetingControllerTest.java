@@ -1,6 +1,10 @@
 package com.example.restservice.greeting;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.http.ResponseEntity;
+
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GreetingControllerTest {
@@ -9,17 +13,10 @@ public class GreetingControllerTest {
     private String fakeName;
 
     @Test
-    public void nameIsEmpty_greetingIsTheExpected() {
-        fakeName = "";
-        Greeting greeting = subject.sayHello(fakeName);
-        assertEquals(greeting.getContent(), getExpectedGreeting());
-    }
-
-    @Test
-    public void nameIsNotEmpty_greetingIsTheExpected() {
+    public void greetingWithFakeName_greetingIsTheExpected() {
         fakeName = "Jackson";
-        Greeting greeting = subject.sayHello(fakeName);
-        assertEquals(greeting.getContent(), getExpectedGreeting());
+        ResponseEntity<Greeting> greeting = subject.sayHello(fakeName);
+        assertEquals(Objects.requireNonNull(greeting.getBody()).getContent(), getExpectedGreeting());
     }
 
     private String getExpectedGreeting() {
