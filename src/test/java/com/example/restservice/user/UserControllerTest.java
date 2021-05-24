@@ -29,7 +29,7 @@ public class UserControllerTest {
     @Test
     public void callingGetUsers_returnsExpectedUsers() {
         // given
-        List<User> fakeUsers = FakeUserRepo.getFakeUsers();
+        List<User> fakeUsers = UserTestUtil.getSavedUsers();
         when(mockUserRepo.findAll()).thenReturn(fakeUsers);
 
         // when
@@ -48,7 +48,7 @@ public class UserControllerTest {
     @Test
     public void callingAddUser_returnsExpectedResponseCode() {
         // given
-        User fakeUser = FakeUserRepo.getFakeUser();
+        User fakeUser = UserTestUtil.getSavedUser();
         when(mockUserRepo.save(fakeUser)).thenReturn(fakeUser);
 
         // when

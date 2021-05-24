@@ -1,5 +1,7 @@
 package com.example.restservice.greeting;
 
+import org.springframework.http.HttpStatus;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.springframework.http.ResponseEntity;
 import java.util.Objects;
@@ -19,11 +21,9 @@ public class GreetingControllerTest {
         ResponseEntity<Greeting> greeting = subject.sayHello(fakeName);
 
         // then
-        assertEquals(Objects.requireNonNull(greeting.getBody()).getContent(), getExpectedGreeting());
-    }
-
-    private String getExpectedGreeting() {
-        return GreetingFormatter.format(fakeName);
+        Assert.assertEquals(greeting.getStatusCode(), HttpStatus.OK);
+        assertEquals(Objects.requireNonNull(greeting.getBody()).getContent(),
+                GreetingFormatter.format(fakeName));
     }
 
 }

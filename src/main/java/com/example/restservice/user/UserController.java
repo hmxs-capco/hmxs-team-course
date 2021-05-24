@@ -41,4 +41,10 @@ public class UserController {
 		return new ResponseEntity<>(userRepo.save(user), HttpStatus.CREATED);
 	}
 
+	@DeleteMapping(value = USERS_BASE_ENDPOINT)
+	public ResponseEntity<User> deleteUser(@PathVariable String id) {
+		userRepo.deleteById(id);
+		return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+	}
+
 }
