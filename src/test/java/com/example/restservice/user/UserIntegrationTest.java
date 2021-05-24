@@ -5,12 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-
-import org.testng.AssertJUnit;
 import org.testng.annotations.Test;
-
 import java.util.List;
-
 import static org.testng.Assert.*;
 
 @ContextConfiguration(classes = {UserConfig.class})
@@ -18,29 +14,6 @@ public class UserIntegrationTest extends AbstractTestNGSpringContextTests {
 
     @Autowired
     private UserController controller;
-
-    public List<User> getUsers() {
-        ResponseEntity<List<User>> response = controller.getUsers();
-        assertEquals(response.getStatusCode(), HttpStatus.OK);
-        return response.getBody();
-    }
-
-    public User getUser(String userId) {
-        ResponseEntity<User> response = controller.getUser(userId);
-        assertEquals(response.getStatusCode(), HttpStatus.OK);
-        return response.getBody();
-    }
-
-    public User postUser(User user) {
-        ResponseEntity<User> response = controller.addUser(user);
-        assertEquals(response.getStatusCode(), HttpStatus.CREATED);
-        return response.getBody();
-    }
-
-    public void deleteUser(String id) {
-        ResponseEntity<User> response = controller.deleteUser(id);
-        assertEquals(response.getStatusCode(), HttpStatus.NO_CONTENT);
-    }
 
     @Test
     public void postUser_userIsSaved() {
@@ -66,4 +39,22 @@ public class UserIntegrationTest extends AbstractTestNGSpringContextTests {
         List<User> updatedUsers = getUsers();
         assertEquals(updatedUsers.size(), 0);
     }
+
+    private List<User> getUsers() {
+        ResponseEntity<List<User>> response = controller.getUsers();
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+        return response.getBody();
+    }
+
+    private User postUser(User user) {
+        ResponseEntity<User> response = controller.addUser(user);
+        assertEquals(response.getStatusCode(), HttpStatus.CREATED);
+        return response.getBody();
+    }
+
+    private void deleteUser(String id) {
+        ResponseEntity<User> response = controller.deleteUser(id);
+        assertEquals(response.getStatusCode(), HttpStatus.NO_CONTENT);
+    }
+
 }
