@@ -1,3 +1,3 @@
 FROM openjdk:8-jdk-alpine
-COPY rest-service-0.0.1.jar rest-service-0.0.1.jar
-CMD ["java","-jar","rest-service-0.0.1.jar"]
+COPY hmxs-team-course-0.1.jar hmxs-team-course-0.1.jar
+CMD ["java","-jar","hmxs-team-course-0.1.jar"]
