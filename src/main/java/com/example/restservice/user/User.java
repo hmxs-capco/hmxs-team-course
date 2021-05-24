@@ -6,16 +6,14 @@ public class User {
 
     @Id
     private String id;
-
-    private String firstname;
-
-    private String lastname;
+    private String firstName;
+    private String lastName;
 
     public User() {}
 
     public User(String firstName, String lastName) {
-        this.firstname = firstName;
-        this.lastname = lastName;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public String getId() {
@@ -26,27 +24,25 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
     public String toString() {
-        return String.format(
-                "User[id=%s, firstname='%s', lastname='%s']",
-                id, firstname, lastname);
+        return String.format("User[id=%s, firstName='%s', lastName='%s']", id, firstName, lastName);
     }
 
 }

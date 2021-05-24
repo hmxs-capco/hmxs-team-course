@@ -27,27 +27,26 @@ public class RestServiceApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
-        log4j2();
+    public void run(String... args) {
         initUsersInDb();
     }
 
-    private void log4j2() {
-        LOGGER.debug("Debug Message Logged !!!");
-        LOGGER.info("Info Message Logged !!!");
-        // LOGGER.error("Error Message Logged !!!", new NullPointerException("NullError"));
-    }
-
     private void initUsersInDb() {
-        // userRepo.deleteAll();
-        // userRepo.save(new User("Alice", "Smith"));
-        // userRepo.save(new User("Bob", "Smith"));
+        userRepo.deleteAll();
+//        userRepo.save(new User("Alice", "Smith"));
+//        userRepo.save(new User("Bob", "Smith"));
         System.out.println("Users:");
         System.out.println("-------------------------------");
         for (User user : userRepo.findAll()) {
             System.out.println(user.toString());
         }
         System.out.println();
+    }
+
+    private void log4j2() {
+        LOGGER.debug("Debug Message Logged !!!");
+        LOGGER.info("Info Message Logged !!!");
+        LOGGER.error("Error Message Logged !!!", new NullPointerException("NullError"));
     }
 
 }
