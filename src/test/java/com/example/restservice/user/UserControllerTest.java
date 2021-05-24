@@ -62,8 +62,8 @@ public class UserControllerTest {
     private static void verifyUser(User user) {
         assertNotNull(user);
         assertTrue(isNotNullOrEmpty(user.getId()));
-        assertTrue(isNotNullOrEmpty(user.getFirstname()));
-        assertTrue(isNotNullOrEmpty(user.getLastname()));
+        assertTrue(isNotNullOrEmpty(user.getFirstName()));
+        assertTrue(isNotNullOrEmpty(user.getLastName()));
     }
 
     private static boolean isNotNullOrEmpty(String input) {
