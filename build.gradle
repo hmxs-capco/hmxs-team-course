@@ -29,6 +29,8 @@ test {
 }
 
 docker {
-	name "${project.name}:${project.version}"
-	files "build/libs/rest-service-0.1.jar"
+	dependsOn build
+	name "${project.group}/${bootJar.baseName}"
+	files bootJar.archivePath
+	buildArgs(['JAR_FILE': "${bootJar.archiveName}"])
 }
