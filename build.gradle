@@ -27,12 +27,14 @@ dependencies {
 test {
 	useTestNG()
 }
-bootJar {
-	baseName = 'rest-service'
-	version =  '0.1'
-}
+
+//bootJar {
+//	baseName = 'rest-service'
+//	version =  '0.1'
+//}
 
 docker {
 	name "${project.name}:${project.version}"
 	files 'build/libs/rest-service-0.1.jar'
+	buildArgs(['JAR_FILE': "build/libs/rest-service-0.1.jar"])
 }
