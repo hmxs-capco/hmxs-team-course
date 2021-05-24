@@ -7,7 +7,7 @@ plugins {
 
 group = 'com.example'
 version = '0.1'
-sourceCompatibility = '1.8'
+sourceCompatibility = '11'
 
 repositories {
 	mavenCentral()
@@ -28,13 +28,14 @@ test {
 	useTestNG()
 }
 
-//bootJar {
-//	baseName = 'rest-service'
-//	version =  '0.1'
-//}
+bootJar {
+	baseName = 'rest-service'
+	version =  '0.1'
+}
 
 docker {
-	name "${project.name}:${project.version}"
-	files 'build/libs/rest-service-0.1.jar'
-	buildArgs(['JAR_FILE': "build/libs/rest-service-0.1.jar"])
+	dependsOn build
+	name "${project.group}/${bootJar.baseName}"
+	files bootJar.archivePath
+	buildArgs(['JAR_FILE': "${bootJar.archiveName}"])
 }
