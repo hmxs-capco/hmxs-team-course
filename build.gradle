@@ -28,7 +28,7 @@ test {
 	useTestNG()
 }
 
-//docker {
-//	name "${project.name}:${project.version}"
-//	files 'build/libs/rest-service-0.1.jar'
-//}
+docker {
+	name "${project.name}:${project.version}"
+	files 'build/libs/rest-service-0.1.jar'
+}
