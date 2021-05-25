@@ -1,9 +1,0 @@
-version: '3'
-services:
-  web:
-    build:
-      context: ./
-      args:
-        JAR_FILE: build/libs/rest-service-0.1.jar
-    ports:
-      - "8090:8090"

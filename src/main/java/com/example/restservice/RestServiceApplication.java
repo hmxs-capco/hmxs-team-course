@@ -28,11 +28,11 @@ public class RestServiceApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // initUsersInDb();
+        initUsersInDb();
     }
 
     private void initUsersInDb() {
-        userRepo.deleteAll();
+//        userRepo.deleteAll();
 //        userRepo.save(new User("Alice", "Smith"));
 //        userRepo.save(new User("Bob", "Smith"));
         System.out.println("Users:");
