@@ -28,7 +28,7 @@ public class RestServiceApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        initUsersInDb();
+        // initUsersInDb();
     }
 
     private void initUsersInDb() {
