@@ -6,4 +6,4 @@ services:
       args:
         JAR_FILE: build/libs/rest-service-0.1.jar
     ports:
-      - "8090:80980"
+      - "8090:8090"
